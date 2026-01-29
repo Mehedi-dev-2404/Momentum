@@ -1,4 +1,20 @@
+from datetime import datetime, timedelta
+
 class Scheduler:
     # Allocates tasks into time slots
     # This file assigns tasks to time slots based on constraints.
-    pass
+    def __init__(self, user_profile, energy_model):
+        self.user_profile = user_profile
+        self.energy_model = energy_model
+    
+    def create_daily_schedule(self, ranked_tasks, current_time):
+        """
+        Returns a list of scheduled task blocks for today. 
+        Each block will later contain:
+        - task
+        - start_time
+        - end_time
+        """
+        daily_schedule = []
+        
+        return daily_schedule
