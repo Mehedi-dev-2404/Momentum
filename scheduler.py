@@ -19,5 +19,15 @@ class Scheduler:
         remaining_capacity = self.user_profile.daily_capacity_minutes
 
         daily_schedule = []
-        
+
+        for task in ranked_tasks:
+                start_time = current_time
+                end_time = start_time + timedelta(minutes=task.estimated_duration)
+                daily_schedule.append({
+                    'task': task,
+                    'start_time': start_time,
+                    'end_time': end_time
+                })
+                current_time = end_time
+                remaining_capacity -= task.estimated_duration
         return daily_schedule
