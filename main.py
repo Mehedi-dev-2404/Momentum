@@ -31,7 +31,8 @@ def add_task(storage):
     "deadline": new_task.deadline.strftime("%Y-%m-%d %H:%M"),
     "status": new_task.status}
     
-    tasks = storage.load_tasks(task_data)
+    tasks = storage.load_tasks()
+    tasks.append(task_data)
     storage.save_tasks(tasks)
 
     print("\nTask added successfully!")
@@ -53,7 +54,7 @@ def view_tasks(storage):
     )
 
     daily_schedule = scheduler.create_daily_schedule(ranked_tasks)
-    print("\n🗓️ Today’s Schedule\n")
+    print("\nToday’s Schedule\n")
 
     task_number = 1
 
@@ -70,19 +71,45 @@ def view_tasks(storage):
         )
         task_number += 1
 
+def create_user_profile(storage):
+    peak_hours_input = input("Enter peak hours (comma-separated, e.g., 9,10,11): ")
+    low_energy_hours_input = input("Enter low energy hours (comma-separated, e.g., 14,15,16): ")
+    daily_capacity_minutes = int(input("Enter daily capacity in minutes: "))
+
+    peak_hours = [int(hour.strip()) for hour in peak_hours_input.split(',')]
+    low_energy_hours = [int(hour.strip()) for hour in low_energy_hours_input.split(',')]
+
+    user_profile = UserProfile(
+        peak_hours=peak_hours,
+        low_energy_hours=low_energy_hours,
+        daily_capacity_minutes=daily_capacity_minutes
+    )
+
+    user_profile_data = {
+        "peak_hours": user_profile.peak_hours,
+        "low_energy_hours": user_profile.low_energy_hours,
+        "daily_capacity_minutes": user_profile.daily_capacity_minutes
+    }
+
+    storage.save_user_profile(user_profile_data)
+    print("\nUser profile created/updated successfully!")
+
 def main():
     storage = Storage()
     while True:
-        print("Welcome to Momnentum Task Scheduler")
+        print("Welcome to Momentum Task Scheduler")
         print("1. Add Task")
         print("2. View Today's Schedule")
-        print("3. Exit")
+        print("3. Create/Edit User Profile")
+        print("4. Exit")
         choice = input("Choose an option: ")
         if choice == '1':
             add_task(storage)
         elif choice == '2':
             view_tasks(storage)
         elif choice == '3':
+            create_user_profile(storage)
+        elif choice == '4':
             print("Exiting...")
             break
         else:

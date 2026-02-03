@@ -11,14 +11,15 @@ class Task:
         self.energy_required = energy_required
         self.status = status  # possible statuses: PENDING, COMPLETED, SKIPPED
         self._created_at = datetime.datetime.now()  # to be set when the task is created
+        self.deadline = datetime.datetime.strptime(deadline, "%Y-%m-%d %H:%M")
         self.validate()
     
     def validate(self):
         # Validate task data
         if not self.title or not isinstance(self.title, str):
             raise ValueError("Title must be a non-empty string.")
-        if not isinstance(self.deadline, str):
-            raise ValueError("Deadline must be a string")
+        if not isinstance(self.deadline, datetime.datetime):
+            raise ValueError("Deadline must be a datetime object.")
         if not isinstance(self.estimated_duration, int) or self.estimated_duration <= 0:
             raise ValueError("Estimated duration must be a positive integer.")
         if self.priority not in ['LOW', 'MEDIUM', 'HIGH']:
