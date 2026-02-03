@@ -3,13 +3,13 @@ import datetime
 class Task:
     # Represents a single unit of work
     # This file defines what a task is and validates its data.
-    def __init__(self, title, deadline, estimated_duration, priority, energy_required):
+    def __init__(self, title, deadline, estimated_duration, priority, energy_required, status='PENDING'):
         self.title = title
         self.deadline = deadline
         self.estimated_duration = estimated_duration
         self.priority = priority
         self.energy_required = energy_required
-        self.status = 'PENDING'  # possible statuses: PENDING, COMPLETED, SKIPPED
+        self.status = status  # possible statuses: PENDING, COMPLETED, SKIPPED
         self._created_at = datetime.datetime.now()  # to be set when the task is created
         self.validate()
     
@@ -25,3 +25,5 @@ class Task:
             raise ValueError("Priority must be one of: LOW, MEDIUM, HIGH.")
         if not self.energy_required in ['HIGH', 'MEDIUM', 'LOW']:
             raise ValueError("Energy required must be one of: HIGH, MEDIUM, LOW.")
+        if self.status not in ['PENDING', 'COMPLETED', 'SKIPPED']:
+            raise ValueError("Status must be one of: PENDING, COMPLETED, SKIPPED.")

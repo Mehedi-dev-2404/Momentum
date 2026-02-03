@@ -1,11 +1,15 @@
 import json
+import os
 
 class Storage:
     # Handles saving and loading data
     # This file saves and loads data from JSON.
 
-    task_file = '/Users/mehedimostafa/Desktop/PROJECTS/New Projectxx/Momentum/data/tasks.json'
-    user_file = '/Users/mehedimostafa/Desktop/PROJECTS/New Projectxx/Momentum/data/user_profile.json'
+    BASE_DIR = os.path.dirname(__file__)
+    DATA_DIR = os.path.join(BASE_DIR, "data")
+
+    task_file = os.path.join(DATA_DIR, "tasks.json")
+    user_file = os.path.join(DATA_DIR, "user_profile.json")
 
     def save_tasks(self, tasks):
         with open(self.task_file, 'w') as file:
