@@ -21,7 +21,7 @@ class PriorityEngine:
                 if task.energy_required == current_energy:
                     score += 2
                 
-                deadline = datetime.strptime(task.deadline, "%Y-%m-%d %H:%M")
+                deadline = task.deadline
                 time_left = (deadline - current_time)
 
                 if time_left <= timedelta(0):

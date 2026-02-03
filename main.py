@@ -64,10 +64,12 @@ def view_tasks(storage):
     for block in daily_schedule:
         print(f"Task: {task_number}.")
         print(
+            "\n" + block['task'].title,
+            "\nTime:",
             block['start_time'].strftime("%H:%M"),
             "→",
             block['end_time'].strftime("%H:%M"),
-            block['task'].title
+            "\n"
         )
         task_number += 1
 

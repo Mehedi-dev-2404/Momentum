@@ -11,7 +11,10 @@ class Task:
         self.energy_required = energy_required
         self.status = status  # possible statuses: PENDING, COMPLETED, SKIPPED
         self._created_at = datetime.datetime.now()  # to be set when the task is created
-        self.deadline = datetime.datetime.strptime(deadline, "%Y-%m-%d %H:%M")
+        if isinstance(deadline, str):
+            self.deadline = datetime.datetime.strptime(deadline, "%Y-%m-%d %H:%M")
+        else:
+            self.deadline = deadline
         self.validate()
     
     def validate(self):
