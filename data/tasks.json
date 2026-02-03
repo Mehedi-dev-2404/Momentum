@@ -1,1 +1,64 @@
-[]
+[{
+ "title": "DSA Practice", 
+ "priority": "HIGH", 
+ "energy_required": "HIGH", 
+ "estimated_duration": 90, 
+ "deadline": "2026-02-03 11:30", 
+ "status": "PENDING"
+},
+{
+    "title": "Read Lecture",
+    "priority": "MEDIUM",
+    "energy_required": "MEDIUM",
+    "estimated_duration": 60,
+    "deadline": "2026-02-03 14:00",
+    "status": "PENDING"
+  },
+  {
+    "title": "Email Admin",
+    "priority": "LOW",
+    "energy_required": "LOW",
+    "estimated_duration": 20,
+    "deadline": "2026-02-03 12:00",
+    "status": "PENDING"
+  },
+  {
+    "title": "Grocery Shopping",
+    "priority": "LOW",
+    "energy_required": "LOW",
+    "estimated_duration": 45,
+    "deadline": "2026-02-04 18:00",
+    "status": "PENDING"
+  },
+  {
+    "title": "Project Proposal",
+    "priority": "HIGH",
+    "energy_required": "MEDIUM",
+    "estimated_duration": 120,
+    "deadline": "2026-02-04 23:59",
+    "status": "PENDING"
+  },
+  {
+    "title": "Walk the Dog",
+    "priority": "LOW",
+    "energy_required": "LOW",
+    "estimated_duration": 30,
+    "deadline": "2026-02-03 20:00",
+    "status": "PENDING"
+  },
+  {
+    "title": "Code Review",
+    "priority": "MEDIUM",
+    "energy_required": "HIGH",
+    "estimated_duration": 60,
+    "deadline": "2026-02-03 16:00",
+    "status": "PENDING"
+  },
+  {
+    "title": "Prepare Presentation",
+    "priority": "HIGH",
+    "energy_required": "HIGH",
+    "estimated_duration": 180,
+    "deadline": "2026-02-05 09:00",
+    "status": "PENDING"
+  }]
