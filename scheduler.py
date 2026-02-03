@@ -20,25 +20,25 @@ class Scheduler:
 
         daily_schedule = []
         energy_levels = {'HIGH': 3, 'MEDIUM': 2, 'LOW': 1}
-        current_energy = self.energy_model.energy_meter(self.user_profile)
 
-        for task in ranked_tasks:
-                if remaining_capacity <= 0:
-                    break
-                elif task.estimated_duration > remaining_capacity:
-                    break
-                if energy_levels[current_energy] >= energy_levels[task.energy_required]:
-                    start_time = current_time
-                    end_time = start_time + timedelta(minutes=task.estimated_duration)
+        for task in ranked_tasks:  
+            current_energy = self.energy_model.energy_meter(self.user_profile)
+            if remaining_capacity <= 0:
+                continue
+            elif task.estimated_duration > remaining_capacity:
+                continue
+            if energy_levels[current_energy] >= energy_levels[task.energy_required]:
+                start_time = current_time
+                end_time = start_time + timedelta(minutes=task.estimated_duration)
 
-                    daily_schedule.append({
-                        'task': task,
-                        'start_time': start_time,
-                        'end_time': end_time
-                    })
-                    current_time = end_time
-                    remaining_capacity -= task.estimated_duration
-                else:
-                    continue
+                daily_schedule.append({
+                    'task': task,
+                    'start_time': start_time,
+                    'end_time': end_time
+                })
+                current_time = end_time
+                remaining_capacity -= task.estimated_duration
+            else:
+                continue
 
         return daily_schedule
