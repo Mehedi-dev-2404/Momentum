@@ -104,7 +104,6 @@ def main():
         print("2. View Today's Schedule")
         print("3. Create/Edit User Profile")
         print("4. Exit")
-        print("")
         choice = input("Choose an option: ")
         if choice == '1':
             add_task(storage)
